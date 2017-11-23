@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>js presentation framework</title>
+	<link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/solarized.css">
+</head>
+<body>
+	<div class="reveal">
+        <div class="slides">
+            <section>
+            	<h2>JS Presentation Framework</h2>
+            	<p>使用 HTML 创建演示文稿</p>
+            </section>
+            <section>
+                <h2>常见的库</h2>
+            	<p class="fragment">impress.js</p>
+            	<p class="fragment">reveal.js</p>
+                <p class="fragment">spectacle</p>
+                <p class="fragment">deck.js等</p>
+            </section>
+            <section>
+            	<h2>impress.js</h2>
+            	<p class="fragment">可以做成ppt，但是更是灵活的文字展示框架，支持很多特效，不提供模版机制，作者更鼓励用来实现有趣的点子，可以把效果做的很炫。</p>
+                <p class="fragment">The only limit is your imagination ^_^</p>
+            </section>
+            <section>
+            	<h2>reveal.js</h2>
+            	<p>功能比较全，支持模版，markdown，pdf导出，自动轮播，lazy-loading，按键绑定等特性，而且还能依赖其他js库完成功能。</p>
+            </section>
+            <section>
+            	<h2>spectacle</h2>
+            	<p>功能也比较全，最大的特点是纯React实现，所有的功能都通过React组件提供。</p>
+            </section>
+            <section>
+            	<h2>deck.js</h2>
+            	<p>功能相对简单，支持模版，可以用来制作基本功能的PPT，基于jquery实现，非常容易上手。</p>
+            </section>
+            <section data-transition="zoom">
+                <h2>功能实现</h2>
+                <p>以上几个组件虽然设计思想和代码实现有很大不同，但是在实现展示效果上最终均基于CSS Transitions和Transforms进行变换完成。</p>
+            </section>
+             <section>
+            	<h2>Transforms</h2>
+                <p class="fragment">首先需要了解这个坐标图</p>
+            	<p class="fragment"><img src="./img/3d_axes.png"/></p>
+            </section>
+            <section>
+            	<h2>rotateX, rotateY, rotateZ</h2>
+                <p class="fragment">旋转X轴</p>
+            	<p class="fragment">旋转Y轴</p>
+                <p class="fragment">旋转Z轴</p>
+            </section>
+            <section>
+            	<h2>perspective</h2>
+                <p class="fragment">透视，视角</p>
+            	<p class="fragment">可以简单的理解为视距，用来设置用户和元素3D空间Z平面之间的距离。而其效应由他的值来决定，值越小，用户与3D空间Z平面距离越近，视觉效果更令人印象深刻；反之，值越大，用户与3D空间Z平面距离越远，视觉效果就很小。</p>
+            </section>
+            <section>
+            	<h2>实战perspective</h2>
+                <p class="fragment">观察以下代码：</p>
+                <p class="fragment"><img src="./img/3d.png"/></p>
+            </section>
+            <section>
+            	<h2>效果如下</h2>
+                <p class="fragment">父节点设置了perspective的3d旋转才明显</p>
+                <p class="fragment"><img src="./img/view1.jpg"/><img src="./img/view2.jpg"/ style="margin-left: 30px"></p>
+            </section>
+        </div>
+    </div>
+<script src="js/reveal.js"></script>
+<script>
+    Reveal.initialize({
+	// 是否在右下角展示控制条
+	controls: true,
+	// 是否显示演示的进度条
+    progress: true,
+
+    // 是否显示当前幻灯片的页数
+    slideNumber: 'c/t',
+
+    // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    history: false,
+
+    // 是否启用键盘快捷键来导航
+    keyboard: true,
+
+    // 是否启用幻灯片的概览模式,开启后，可以使用ESC键查看幻灯片概览
+    overview: true,
+
+    // 是否将幻灯片垂直居中
+    center: true,
+
+    // 是否在触屏设备上启用触摸导航
+    touch: true,
+
+    // 是否循环演示
+    loop: false,
+
+    // 是否将演示的方向变成 RTL
+    rtl: false,
+
+    // 全局开启和关闭碎片
+    fragments: true,
+
+    // 标识演示文稿是否在嵌入模式中运行，即包含在屏幕的有限部分中的
+    embedded: false,
+
+    // 标识当问号键被点击的时候是否应该显示一个帮助的覆盖层
+    help: true,
+
+    //  两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    autoSlide: 0,
+
+    // 当遇到用户输入的时候停止切换
+    autoSlideStoppable: true,
+
+    // 是否启用通过鼠标滚轮来导航幻灯片
+    mouseWheel: true,
+
+    //  是否在移动设备上隐藏地址栏
+    hideAddressBar: true,
+
+    // 是否在一个弹出的 iframe 中打开幻灯片中的链接
+    previewLinks: false,
+
+    // 切换过渡效果
+    transition: 'default', // none/fade/slide/convex/concave/zoom
+
+    // 过渡速度
+    transitionSpeed: 'default', // default/fast/slow
+
+    // 全屏幻灯片背景的过渡效果
+    backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+
+    // 除当前可见的之外的幻灯片数量
+    viewDistance: 3,
+
+    // 视差背景图片
+    parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+    // 视差背景尺寸
+    parallaxBackgroundSize: '', // CSS syntax, e.g. "2100px 900px"
+
+    // 移动视差背景（水平和垂直）滑动变化的数量, 例如100
+    parallaxBackgroundHorizontal: '',
+    parallaxBackgroundVertical: ''
+});
+</script>
+</body>
+</html>
